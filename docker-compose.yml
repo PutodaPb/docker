@@ -1,10 +1,7 @@
 version: '3.7'
 
 services:
-  links:
-      - database_ignite
-  depends_on:
-      - database_ignite
+
   database_ignite:
     image: postgres
     container_name: database_ignite
@@ -20,6 +17,8 @@ services:
 
     
   app:
+    depends_on:
+      - database_ignite
     build: .
     container_name: rentx
     ports:
